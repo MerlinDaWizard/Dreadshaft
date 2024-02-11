@@ -24,6 +24,7 @@ func attach_record(record: RigidBody3D) -> bool:
 	
 	$AudioStreamPlayer3D.set_stream(ResourceLoader.load(record.audio_file))
 	$AudioStreamPlayer3D.play()
+	
 	attached_record = record
 	return true
 
