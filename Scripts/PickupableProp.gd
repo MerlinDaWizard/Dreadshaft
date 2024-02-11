@@ -36,7 +36,6 @@ func move(delta):
 	set_linear_velocity(direction * snap_velocity *distance)
 
 	if distance > let_go_distance:
-		print("letgo")
 		detach()
 #
 
