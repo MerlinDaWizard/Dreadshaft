@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cjq0d60i8pvu3"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xr11x"]
-[ext_resource type="Material" uid="uid://u17hah2qf0ec" path="res://Materials/Standart Light Blue Material.tres" id="2_83j6f"]
+[ext_resource type="Material" path="res://Materials/Standart Light Blue Material.tres" id="2_83j6f"]
 [ext_resource type="Texture2D" uid="uid://c672jm87el7cu" path="res://Materials/fern_by_murachan15_dg7wcy4-pre.png" id="3_4n8av"]
 [ext_resource type="Script" path="res://Scripts/PickupableProp.gd" id="4_uug27"]
 
