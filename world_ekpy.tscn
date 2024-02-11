@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddenixl3hkl7s"]
+[gd_scene load_steps=10 format=3 uid="uid://cjq0d60i8pvu3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_1dhaf"]
-[ext_resource type="Material" uid="uid://u17hah2qf0ec" path="res://Materials/Standart Light Blue Material.tres" id="2_gqcl6"]
+[ext_resource type="Material" path="res://Materials/Standart Light Blue Material.tres" id="2_gqcl6"]
 [ext_resource type="Texture2D" uid="uid://c672jm87el7cu" path="res://Materials/fern_by_murachan15_dg7wcy4-pre.png" id="3_xc171"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t8xy5"]
@@ -25,7 +25,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 transparency = 1
 albedo_texture = ExtResource("3_xc171")
 
-[node name="World Ekpy" type="Node3D"]
+[node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -35,58 +35,58 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i5ox5")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="PlayerBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_1dhaf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54606, 0)
 mesh = SubResource("CapsuleMesh_tj2v3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54606, 0)
 shape = SubResource("ConvexPolygonShape3D_r1k4c")
 
-[node name="Head" type="Node3D" parent="CharacterBody3D"]
+[node name="Head" type="Node3D" parent="PlayerBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17689, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+[node name="Camera3D" type="Camera3D" parent="PlayerBody3D/Head"]
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="LevelLayout" type="Node3D" parent="."]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636151, 7.60756)
 use_collision = true
 material = ExtResource("2_gqcl6")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(97.9264, 0, 0, 0, 0.172319, 0, 0, 0, 97.9264, 0, 0, 0)
 use_collision = true
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(4.41938, 0, 0, 0, 1, 0, 0, 0, 4.41938, 0, 1.2723, 13.0147)
 material_override = SubResource("StandardMaterial3D_a5pwx")
 use_collision = true
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(67.2533, 0, 0, 0, 4.83059, 0, 0, 0, 2.27715, -0.242079, 2.50145, 26.8619)
 use_collision = true
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(8.67653, 0, 0, 0, 1, 0, 0, 0, 1.78548, 0, 2.5446, 19.7284)
 use_collision = true
 material = ExtResource("2_gqcl6")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(8.67653, 0, 0, 0, 1, 0, 0, 0, 1.78548, 0, 4.49865, 23.3565)
 use_collision = true
 material = ExtResource("2_gqcl6")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(8.67653, 0, 0, 0, 1, 0, 0, 0, 1.78548, 0.0982466, 1.68533, 17.4029)
 use_collision = true
 material = ExtResource("2_gqcl6")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Node3D"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelLayout"]
 transform = Transform3D(8.67653, 0, 0, 0, 1, 0, 0, 0, 1.78548, -0.272516, 3.45764, 21.6173)
 use_collision = true
 material = ExtResource("2_gqcl6")
