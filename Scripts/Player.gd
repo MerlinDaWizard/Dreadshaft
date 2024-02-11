@@ -17,11 +17,17 @@ var t_bob = 0.0
 const BASE_FOV = 75
 const FOV_CHANGE = 1.5
 
+#Pickup mechanic
+var held_object : PickupableProp
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+#OnReadies
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var camera_raycast = $Head/Camera3D/CameraRay
+@onready var hold_position = $Head/Camera3D/HoldPosition
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
@@ -40,6 +46,8 @@ func _physics_process(delta: float):
 	
 	_handle_head_bob(delta)
 	_handle_FOV(delta)
+	
+	_handle_pickup()
 
 	move_and_slide()
 
@@ -82,3 +90,17 @@ func _handle_FOV(delta : float):
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED *2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov,target_fov, delta*8.0)
+	
+func _handle_pickup() -> void:
+	if Input.is_action_just_pressed("interact"):
+		var object = camera_raycast.get_collider()
+
+		if object is PickupableProp and !held_object:
+			held_object = object
+			held_object.attach(hold_position)
+		elif held_object is PickupableProp:
+			held_object.detach()
+			held_object = null
+
+	if held_object and held_object.prop_container != hold_position:
+		held_object = null
