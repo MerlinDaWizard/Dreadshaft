@@ -94,13 +94,14 @@ func _handle_FOV(delta : float):
 func _handle_pickup() -> void:
 	if Input.is_action_just_pressed("interact"):
 		var object = camera_raycast.get_collider()
-
-		if object is PickupableProp and !held_object:
-			held_object = object
-			held_object.attach(hold_position)
-		elif held_object is PickupableProp:
-			held_object.detach()
-			held_object = null
+		
+		if object is PickupableProp:
+			if !held_object:
+				held_object = object
+				held_object.attach(hold_position)
+			elif held_object is PickupableProp:
+				held_object.detach()
+				held_object = null
 
 	if held_object and held_object.prop_container != hold_position:
 		held_object = null
