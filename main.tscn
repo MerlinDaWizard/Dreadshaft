@@ -22,7 +22,7 @@ tonemap_mode = 2
 transparency = 1
 albedo_texture = ExtResource("3_4n8av")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0bp6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2rgc"]
 albedo_color = Color(0.454902, 0.223529, 0.956863, 1)
 metallic = 0.25
 anisotropy = 1.0
@@ -30,7 +30,7 @@ ao_light_affect = 0.25
 subsurf_scatter_transmittance_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_w343d"]
-material = SubResource("StandardMaterial3D_i0bp6")
+material = SubResource("StandardMaterial3D_r2rgc")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7jcao"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
