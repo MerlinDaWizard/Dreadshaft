@@ -52,3 +52,5 @@ material = SubResource("StandardMaterial3D_ad51l")
 
 [node name="PlayerBody3D" parent="." instance=ExtResource("2_0w07v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0460601, 0)
+
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
