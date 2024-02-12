@@ -46,7 +46,6 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 [node name="Pickupable Box" type="RigidBody3D" groups=["Pickupable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39206, -6.39864)
 mass = 6.0
-linear_damp = 5.0
 script = ExtResource("1_q6y2u")
 let_go_distance = 1.0
 
