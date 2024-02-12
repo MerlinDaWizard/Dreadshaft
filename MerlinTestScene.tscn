@@ -11,7 +11,7 @@ script = ExtResource("1_sk0cw")
 
 [node name="Record1" parent="." instance=ExtResource("1_yx4hq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342059, 1.82112, 0.00209141)
-audio_file = "res://ImperialMarch60.wav"
+audio_file = "res://better-day-186374.mp3"
 
 [node name="RecordPlayer" parent="." instance=ExtResource("2_31y6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.124448, 0)
