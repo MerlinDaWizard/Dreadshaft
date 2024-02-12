@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dymfnylkuiyqb"]
+[gd_scene load_steps=5 format=3 uid="uid://dymfnylkuiyqb"]
 
+[ext_resource type="Script" path="res://MerlinTestScene.gd" id="1_sk0cw"]
 [ext_resource type="PackedScene" uid="uid://dbxj1cxukstja" path="res://Items/RecordPlayer/Record.tscn" id="1_yx4hq"]
 [ext_resource type="PackedScene" uid="uid://ch3ovvjfkene6" path="res://Items/RecordPlayer/RecordPlayer.tscn" id="2_31y6c"]
 
 [sub_resource type="Environment" id="Environment_3fphf"]
 
 [node name="MerlinTestScene" type="Node3D"]
+script = ExtResource("1_sk0cw")
 
 [node name="Record1" parent="." instance=ExtResource("1_yx4hq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342059, 1.82112, 0.00209141)

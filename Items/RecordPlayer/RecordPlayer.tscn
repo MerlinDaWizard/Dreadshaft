@@ -5,7 +5,7 @@
 [sub_resource type="AudioStream" id="AudioStream_robrs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cktl"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.6, 0.25, 0.6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_knq4o"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -25,10 +25,11 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.25, 0)
 shape = SubResource("BoxShape3D_2cktl")
 
 [node name="RecordLockPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_knq4o")
@@ -37,5 +38,5 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ffaph")
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
