@@ -18,6 +18,10 @@ transform = Transform3D(0.805412, 0, 0, 0, 0.531627, 0, 0, 0, 0.563352, -1.64829
 use_collision = true
 material = SubResource("StandardMaterial3D_0n882")
 
+[node name="Record2" parent="." instance=ExtResource("1_yx4hq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20168, 0.539194, -1.61104)
+audio_file = "res://better-day-186374.mp3"
+
 [node name="Record1" parent="." instance=ExtResource("1_yx4hq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60084, 0.269597, -0.805519)
 audio_file = "res://better-day-186374.mp3"

@@ -23,9 +23,6 @@ func try_attach_record(record: RigidBody3D) -> bool:
 	if record is PickupableProp:
 		var prop := record as PickupableProp
 		if prop.prop_container:
-			# remove from player
-			prop.prop_container.get_parent().get_parent().get_parent().held_object = null
-			# remove from prop itself
 			prop.detach()
 	
 	# Disable collisions for the record
