@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dreadshaft"
-run/main_scene="res://MerlinTestScene.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -78,6 +78,10 @@ sprint={
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
 3d_physics/layer_3="item_record"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
 
 [rendering]
 
