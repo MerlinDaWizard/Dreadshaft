@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c6qyxdliyjt0d" path="res://assets/elevator/elevator.blend" id="1_l3dpo"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tx5rw"]
+size = Vector3(1.9278, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy0ko"]
+size = Vector3(169.236, 0.0173035, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_dmsux"]
 size = Vector3(2.57233, 1.99908, 2.0351)
 
@@ -20,17 +26,25 @@ size = Vector3(0.00265503, 2.50217, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ofjpi"]
 size = Vector3(1, 2.49916, 0.00366211)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tx5rw"]
-size = Vector3(1.9278, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cy0ko"]
-size = Vector3(169.236, 0.0173035, 1)
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p1nme"]
 height = 0.0198807
 radius = 0.0755699
 
 [node name="elevator" instance=ExtResource("1_l3dpo")]
+
+[node name="rails_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157166, 0, 0)
+shape = SubResource("BoxShape3D_tx5rw")
+
+[node name="rails_StaticBody3D#CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.4943, 0.489771, 0)
+shape = SubResource("BoxShape3D_cy0ko")
+
+[node name="rails_StaticBody3D#CollisionShape3D3" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.0535, -0.489322, 0)
+shape = SubResource("BoxShape3D_cy0ko")
+
+[node name="rails#StaticBody3D" type="StaticBody3D" parent="." index="3"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="door" index="0"]
 
@@ -67,20 +81,6 @@ shape = SubResource("BoxShape3D_mdv2e")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="walls/StaticBody3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24982, -0.499634)
 shape = SubResource("BoxShape3D_ofjpi")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="rails" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rails/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157166, 0, 0)
-shape = SubResource("BoxShape3D_tx5rw")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="rails/StaticBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.4943, 0.489771, 0)
-shape = SubResource("BoxShape3D_cy0ko")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="rails/StaticBody3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.0535, -0.489322, 0)
-shape = SubResource("BoxShape3D_cy0ko")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="button" index="0"]
 shape = SubResource("CylinderShape3D_p1nme")

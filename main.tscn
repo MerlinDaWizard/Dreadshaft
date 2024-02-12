@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjq0d60i8pvu3"]
+[gd_scene load_steps=13 format=3 uid="uid://cjq0d60i8pvu3"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_xr11x"]
 [ext_resource type="Script" path="res://CameraRayOutline.gd" id="2_3drnb"]
@@ -107,3 +107,8 @@ material = ExtResource("2_83j6f")
 [node name="Pickupable Box2" parent="LevelLayout/RigidBodyObjects" instance=ExtResource("5_4w21w")]
 
 [node name="Pickupable Box3" parent="LevelLayout/RigidBodyObjects" instance=ExtResource("5_4w21w")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelLayout/RigidBodyObjects/Pickupable Box"]
+shape = SubResource("ConvexPolygonShape3D_7jcao")
+
+[node name="elevator" parent="." instance=ExtResource("5_32w0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86883, 0.0908529, -2.20642)

@@ -30,7 +30,7 @@ func attach(causer: Node3D):
 func detach():
 	#collision_mask = CONTAINER_MASK_DETACH_MODE
 	prop_container = null
-	angular_damp = -1
+	angular_damp = 0.1
 
 
 func move(delta):
