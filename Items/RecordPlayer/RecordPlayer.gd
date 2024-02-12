@@ -18,15 +18,26 @@ func try_attach_record(record: RigidBody3D) -> bool:
 	# Stop the record colliding with the player
 	record.set_collision_layer_value(1, false)
 	record.set_collision_layer_value(3, false)
+
+	# Remove from players hand if holding
+	if record is PickupableProp:
+		var prop := record as PickupableProp
+		if prop.prop_container:
+			# remove from player
+			prop.prop_container.get_parent().get_parent().get_parent().held_object = null
+			# remove from prop itself
+			prop.detach()
 	
 	# Disable collisions for the record
 	record.freeze = true
+	record.remove_from_group("Pickupable")
 	
 	# Reparent but keep current position
 	var saved_transform: Transform3D = record.global_transform
 	record.reparent($RecordLockPoint)
 	record.global_transform = saved_transform
 	record.initial_transform = record.transform
+	
 	
 	# Set the records state so it can drift atttach
 	record.state = record.States.ATTACHING
@@ -45,7 +56,7 @@ func start_record(file: String) -> void:
 	$AudioStreamPlayer3D.play()
 
 func eject_record() -> void:
-	if attached_record == null || attached_record.state != attached_record.States.PLAYING:
+	if attached_record == null or attached_record.state != attached_record.States.PLAYING:
 		return
 		
 	$AudioStreamPlayer3D.stop()
@@ -55,8 +66,9 @@ func eject_record() -> void:
 	attached_record.reparent(self.get_parent())
 	attached_record.global_transform = saved_transform
 	
-	attached_record.freeze = false
 	attached_record.set_collision_layer_value(1, true)
+	attached_record.freeze = false
+	attached_record.add_to_group("Pickupable")
 	
 	# This is so that we always have atleast 0.5 in a direction.
 	# As Vector3(randf(), randf_range(2,3.5), randf()) has a chance to go straight up.

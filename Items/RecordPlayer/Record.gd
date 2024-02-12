@@ -1,4 +1,4 @@
-extends Node3D
+extends PickupableProp
 
 
 @export_file("*.mp3","*.wav")
@@ -11,6 +11,7 @@ var attach_time: float = 0.0
 var record_player: Node3D = null
 
 func _process(delta: float) -> void:
+	super(delta)
 	if state == States.ATTACHING:
 		attach_time = min(attach_time+delta*2.0, 1.0)
 		

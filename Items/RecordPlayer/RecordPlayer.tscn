@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch3ovvjfkene6"]
+[gd_scene load_steps=7 format=3 uid="uid://ch3ovvjfkene6"]
 
 [ext_resource type="Script" path="res://Items/RecordPlayer/RecordPlayer.gd" id="1_skw2f"]
 
@@ -7,7 +7,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cktl"]
 size = Vector3(0.6, 0.25, 0.6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2td7c"]
+albedo_color = Color(0.239216, 0.12549, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_knq4o"]
+material = SubResource("StandardMaterial3D_2td7c")
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ffaph"]
