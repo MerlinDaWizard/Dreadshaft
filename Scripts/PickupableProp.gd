@@ -14,7 +14,6 @@ const CONTAINER_MASK_DETACH_MODE: int = 7
 var prop_container: Node3D
 
 #Outline Object Nonsese
-@onready var next_pass_shader : ShaderMaterial = $MeshInstance3D.mesh.material.next_pass
 var targeted : bool = false : set = _set_targeted
 
 func _process(delta):
@@ -45,8 +44,7 @@ func move(delta):
 func _set_targeted(val : bool) -> void:
 	targeted = val
 	
-	if next_pass_shader:
-		if targeted:
-			next_pass_shader.set_shader_parameter("outline_width", 3.0)
-		else:
-			next_pass_shader.set_shader_parameter("outline_width", 0.0)
+	if targeted:
+		$"..".set_glow_border_effect(true)
+	else:
+		$"..".set_glow_border_effect(false)

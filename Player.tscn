@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv37bo5vx44q0"]
+[gd_scene load_steps=6 format=3 uid="uid://cv37bo5vx44q0"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4g7yc"]
 [ext_resource type="PackedScene" uid="uid://ds1inkc0lnbr7" path="res://assets/Player/PlayerModel.tscn" id="2_iam1g"]
+[ext_resource type="Script" path="res://addons/glow_border_effect_test/glow_border_effect_demo_camera.gd" id="3_ebp5l"]
+[ext_resource type="Script" path="res://CameraRayOutline.gd" id="4_ui3kv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l4icy"]
 height = 2.5
 
-[node name="PlayerBody3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4g7yc")
+
+[node name="Model" parent="." instance=ExtResource("2_iam1g")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -17,12 +22,13 @@ shape = SubResource("CapsuleShape3D_l4icy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17689, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+script = ExtResource("3_ebp5l")
 
 [node name="CameraRay" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -3.6)
+script = ExtResource("4_ui3kv")
 
 [node name="HoldPosition" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="Player" parent="." instance=ExtResource("2_iam1g")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+[editable path="Model"]

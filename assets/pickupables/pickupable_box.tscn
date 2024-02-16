@@ -1,40 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf2gjemwy5tuu"]
+[gd_scene load_steps=6 format=3 uid="uid://bf2gjemwy5tuu"]
 
+[ext_resource type="Script" path="res://addons/glow_border_effect/glow_border_effect_object.gd" id="1_2rcil"]
 [ext_resource type="Script" path="res://Scripts/PickupableProp.gd" id="1_q6y2u"]
 
-[sub_resource type="Shader" id="Shader_q6r2d"]
-code = "shader_type spatial;
-render_mode cull_front, unshaded;
-
-uniform vec4 outline_color : source_color = vec4(1,1,1,1);
-uniform float outline_width = 2.0;
-
-void vertex() {
-	vec4 clip_position = PROJECTION_MATRIX * (MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
-	vec3 clip_normal = mat3(PROJECTION_MATRIX) * (mat3(MODELVIEW_MATRIX) * NORMAL);
-	
-	vec2 offset = normalize(clip_normal.xy) / VIEWPORT_SIZE * clip_position.w * outline_width * 2.0;
-	
-	clip_position.xy += offset;
-	
-	POSITION = clip_position;
-}
-
-void fragment() {
-	ALBEDO = outline_color.rgb;
-	if (outline_color.a < 1.0) {
-		ALPHA = outline_color.a;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5ymr"]
-render_priority = 0
-shader = SubResource("Shader_q6r2d")
-shader_parameter/outline_color = Color(1, 0.254902, 0.65098, 1)
-shader_parameter/outline_width = 0.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3m3n"]
-next_pass = SubResource("ShaderMaterial_l5ymr")
 albedo_color = Color(0.317647, 0.207843, 0.0431373, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_em3a4"]
@@ -43,14 +12,18 @@ material = SubResource("StandardMaterial3D_v3m3n")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7jcao"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
-[node name="Pickupable Box" type="RigidBody3D" groups=["Pickupable"]]
+[node name="GlowingObject" type="Node3D"]
+script = ExtResource("1_2rcil")
+glow_color = Color(0.764706, 0.027451, 1, 1)
+
+[node name="Pickupable Box" type="RigidBody3D" parent="." groups=["Pickupable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39206, -6.39864)
 mass = 6.0
 script = ExtResource("1_q6y2u")
 let_go_distance = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pickupable Box"]
 mesh = SubResource("BoxMesh_em3a4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickupable Box"]
 shape = SubResource("ConvexPolygonShape3D_7jcao")
