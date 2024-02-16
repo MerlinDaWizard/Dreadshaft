@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbxj1cxukstja"]
+
+[ext_resource type="Script" path="res://scenes/objects/pickupable/record_player/record.gd" id="1_idqay"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voqpb"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r13l4"]
+material = SubResource("StandardMaterial3D_voqpb")
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvhph"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="Record" type="RigidBody3D" groups=["Pickupable"]]
+disable_mode = 1
+collision_layer = 5
+script = ExtResource("1_idqay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_r13l4")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gvhph")
